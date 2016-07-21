@@ -1,0 +1,19 @@
+'.source.js':
+  'Stateless component':
+    'prefix': 'comst'
+    'body': """
+    import React, { PropTypes } from 'react';
+
+    const ${1:TestView} = () => (
+      <box>
+        Hello, there
+      </box>
+    );
+
+    ${1:TestView}.propTypes = {
+      something: PropTypes.any,
+    };
+
+    export default ${1:TestView};
+
+    """
