@@ -1,41 +1,42 @@
 import { createConstants, createReducer } from '../utils/Redux';
 
-export const path = 'counter';
+export const Path = 'counter';
 
-export const initialState = 0;
+export const InitialState = 0;
+
+export const Constants = createConstants([
+  'CounterIncrement',
+  'CounterDecrement',
+]);
 
 export const selectors = {
-  getValue: state => state[path],
+  getValue: state => state[Path],
 };
-
-export const constants = createConstants([
-  'COUNTER_INCREMENT',
-  'COUNTER_DECREMENT',
-]);
 
 export const actions = {
   increment: (value = 1) => ({
-    type: constants.COUNTER_INCREMENT,
+    type: Constants.CounterIncrement,
     payload: value,
   }),
   decrement: (value = 1) => ({
-    type: constants.COUNTER_DECREMENT,
+    type: Constants.CounterDecrement,
     payload: value,
   }),
 };
 
 export const reducer = createReducer({
-  [constants.COUNTER_INCREMENT]: (state, { payload: value }) => (
+  [Constants.CounterIncrement]: (state, { payload: value }) => (
     state + value
   ),
-  [constants.COUNTER_DECREMENT]: (state, { payload: value }) => (
+  [Constants.CounterDecrement]: (state, { payload: value }) => (
     state - value
   ),
-}, initialState);
+}, InitialState);
 
 export default {
-  path,
-  initialState,
+  Path,
+  InitialState,
+  Constants,
   selectors,
   actions,
   reducer,

@@ -5,21 +5,16 @@ import blessed from 'blessed';
 import Root from './views/Root';
 import CounterView from './views/CounterView';
 
-// Creating our screen
 const screen = blessed.screen({
-  // TODO: remove when hyperterm unicode support is fixed
-  forceUnicode: true,
   autoPadding: true,
   smartCSR: true,
   title: 'Airwheel Master',
 });
 
-// Adding a way to quit the program
 screen.key(['escape', 'q', 'C-c'], () => (
   process.exit(0)
 ));
 
-// Rendering the React app using our screen
 render((
   <Root>
     <CounterView/>

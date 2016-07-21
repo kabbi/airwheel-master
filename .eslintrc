@@ -3,7 +3,8 @@
   "parser": "babel-eslint",
   "rules": {
     "no-param-reassign": ["error", { "props": false }],
-    "react/jsx-space-before-closing": [2, "never"],
-    "react/no-unknown-property": 0
+    "react/jsx-space-before-closing": ["error", "never"],
+    "react/no-unknown-property": "off",
+    "no-constant-condition": "off"
   }
 }

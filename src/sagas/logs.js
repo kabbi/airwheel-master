@@ -1,9 +1,9 @@
 import { takeEvery } from 'redux-saga';
-import { take } from 'redux-saga/effects';
 
-import { constants, selectors } from '../modules/logs';
+import { Constants } from '../modules/logs';
 
-function* logAction({ payload: { level, message }}) {
+function* logAction({ payload: { level, message } }) {
+  // eslint-disable-next-line no-console
   console.log(level, message);
 }
 
@@ -11,5 +11,5 @@ export default function* () {
   if (process.env.AW_RUN_MODE !== 'debug') {
     return;
   }
-  yield* takeEvery(constants.LOGS_APPEND, logAction);
+  yield* takeEvery(Constants.LogsAppend, logAction);
 }

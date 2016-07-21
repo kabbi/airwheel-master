@@ -4,16 +4,16 @@ export const modules = [
   counter,
 ];
 
-export const initialState = {};
+export const InitialState = {};
 
-export const rootReducer = (state = initialState, action) => {
+export const rootReducer = (state = InitialState, action) => {
   const nextState = {};
   let hasChanged = false;
-  for (const { path, reducer: moduleReducer } of modules) {
-    const previousStateForPath = state[path];
+  for (const { Path, reducer: moduleReducer } of modules) {
+    const previousStateForPath = state[Path];
     const nextStateForPath = moduleReducer(previousStateForPath, action);
     hasChanged = hasChanged || nextStateForPath !== previousStateForPath;
-    nextState[path] = nextStateForPath;
+    nextState[Path] = nextStateForPath;
   }
   return hasChanged ? nextState : state;
 };

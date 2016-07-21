@@ -1,48 +1,49 @@
 import { createConstants, createReducer } from '../utils/Redux';
 
-export const path = 'logs';
+export const Path = 'logs';
 
-export const initialState = {
+export const InitialState = {
   history: [],
 };
 
+export const Constants = createConstants([
+  'LogsAppend',
+  'LogsClearHistory',
+]);
+
 export const selectors = {
-  getState: state => state[path],
+  getState: state => state[Path],
   getHistory: state => selectors.getState(state).history,
 };
 
-export const constants = createConstants([
-  'LOGS_APPEND',
-  'LOGS_CLEAR_HISTORY',
-]);
-
 export const actions = {
   append: (level, message) => ({
-    type: constants.LOGS_APPEND,
+    type: Constants.LogsAppend,
     payload: { level, message },
   }),
   clearHistory: () => ({
-    type: constants.LOGS_CLEAR_HISTORY,
+    type: Constants.LogsClearHistory,
   }),
 };
 
 export const reducer = createReducer({
-  [constants.LOGS_APPEND]: (state, { payload }) => ({
+  [Constants.LogsAppend]: (state, { payload }) => ({
     ...state,
     history: [
       ...history,
       payload,
     ],
   }),
-  [constants.LOGS_CLEAR_HISTORY]: state => ({
+  [Constants.LogsClearHistory]: state => ({
     ...state,
     history: [],
   }),
-}, initialState);
+}, InitialState);
 
 export default {
-  path,
-  initialState,
+  Path,
+  InitialState,
+  Constants,
   selectors,
   actions,
   reducer,
